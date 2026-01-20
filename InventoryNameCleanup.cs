@@ -5,18 +5,42 @@ public class InventoryNameCleanup
 {
   public static void Main()
   {
-    string input= "llapppptop bag".Trim();
-    StringBuilder result=new StringBuilder();
-    char prev='\0';
-    foreach(char ch in input)
+    // string input= "llapppptop bag".Trim();
+    // StringBuilder result=new StringBuilder();
+    // char prev='\0';
+    // foreach(char ch in input)
+    // {
+    //   if(prev!=ch){
+    //     result.Append(ch);
+    //   }
+    //   prev=ch;
+    // }
+    // string titleCase=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.ToString().ToLower());
+    // System.Console.WriteLine(titleCase);
+    string inp=Console.ReadLine().Trim();
+    StringBuilder res=new StringBuilder();
+    bool isNewWord=true;
+    foreach(char ch in inp)
     {
-      if(prev!=ch){
-        result.Append(ch);
+      if (ch==' ')
+      {
+        res.Append(ch);
+        isNewWord=true;
       }
-      prev=ch;
+      else
+      {
+        if (isNewWord)
+        {
+          res.Append(char.ToUpper(ch));
+          isNewWord=false;
+        }
+        else
+        {
+          res.Append(ch);
+        }
+      }
     }
-    string titleCase=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(result.ToString().ToLower());
-    System.Console.WriteLine(titleCase);
+System.Console.WriteLine(res.ToString());
     
   }
 }
